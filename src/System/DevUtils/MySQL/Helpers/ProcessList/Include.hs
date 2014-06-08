@@ -1,14 +1,12 @@
+{-# LANGUAGE OverloadedStrings #-}
 module System.DevUtils.MySQL.Helpers.ProcessList.Include (
- ProcessList(..)
+ ProcessList(..),
+ processListQuery
 ) where
 
 import Database.MySQL.Simple
 import Database.MySQL.Simple.QueryResults
-import Database.MySQL.Simple.QueryParams
 import Database.MySQL.Simple.Result
-import Database.MySQL.Simple.Types
-import Database.MySQL.Simple.Param
-import System.Environment
 
 instance QueryResults ProcessList where
  convertResults [fa,fb,fc,fd,fe,ff,fg,fh] [va,vb,vc,vd,ve,vf,vg,vh] = ProcessList { _id = a, _user = b, _host = c, _db = d, _command = e, _time = f, _state = g, _info = h }
@@ -33,3 +31,6 @@ data ProcessList = ProcessList {
  _state :: Maybe String,
  _info :: Maybe String
 } deriving (Show)
+
+processListQuery :: Query
+processListQuery = "show full processlist"

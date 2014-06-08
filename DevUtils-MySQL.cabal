@@ -16,6 +16,10 @@ library
    System.DevUtils.MySQL.Include
    System.DevUtils.MySQL.Helpers.ProcessList
    System.DevUtils.MySQL.Helpers.ProcessList.Include
+   System.DevUtils.MySQL.Helpers.Databases
+   System.DevUtils.MySQL.Helpers.Databases.Include
+   System.DevUtils.MySQL.Helpers.Tables
+   System.DevUtils.MySQL.Helpers.Tables.Include
   build-depends:       base ==4.7.*, HUnit ==1.2.5.*, bytestring ==0.10.4.0, mysql-simple ==0.2.2.3
   GHC-Options:         -Wall -rtsopts
   hs-source-dirs:      src
