@@ -1,4 +1,4 @@
-module System.DevUtils.MySQL.Include.ProcessList (
+module System.DevUtils.MySQL.Helpers.ProcessList.Include (
  ProcessList(..)
 ) where
 
@@ -28,7 +28,7 @@ data ProcessList = ProcessList {
  _user :: Maybe String,
  _host :: Maybe String,
  _db :: Maybe String,
- _command :: String,
+ _command :: Maybe String,
  _time :: Maybe Integer,
  _state :: Maybe String,
  _info :: Maybe String

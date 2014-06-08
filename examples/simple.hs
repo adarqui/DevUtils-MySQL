@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 
-import System.DevUtils.MySQL.Include
+import System.DevUtils.MySQL.Helpers.ProcessList (ProcessList(..))
 import Database.MySQL.Simple
 import System.Environment
 
