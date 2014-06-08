@@ -1,11 +1,12 @@
 module System.DevUtils.MySQL.Helpers.ProcessList.Default (
- defaultProcessList
+ default',
+ default'List
 ) where
 
 import System.DevUtils.MySQL.Helpers.ProcessList.Include (ProcessList(..))
 
-defaultProcessList :: ProcessList
-defaultProcessList = ProcessList {
+default' :: ProcessList
+default' = ProcessList {
  _id = Nothing,
  _user = Nothing,
  _host = Nothing,
@@ -15,3 +16,6 @@ defaultProcessList = ProcessList {
  _state = Nothing,
  _info = Nothing
 }
+
+default'List :: [ProcessList]
+default'List = []

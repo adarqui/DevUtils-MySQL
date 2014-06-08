@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module System.DevUtils.MySQL.Helpers.Databases.Include (
  Databases(..),
- databasesQuery
+ query'List
 ) where
 
 import Database.MySQL.Simple
@@ -20,5 +20,5 @@ data Databases = Databases {
  _database :: Maybe String
 } deriving (Show)
 
-databasesQuery :: Query
-databasesQuery = "show databases"
+query'List :: Query
+query'List = "show databases"

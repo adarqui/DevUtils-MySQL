@@ -1,10 +1,14 @@
 module System.DevUtils.MySQL.Helpers.Databases.Default (
- defaultDatabases
+ default',
+ default'List
 ) where
 
 import System.DevUtils.MySQL.Helpers.Databases.Include (Databases(..))
 
-defaultDatabases :: Databases
-defaultDatabases = Databases {
+default' :: Databases
+default' = Databases {
  _database = Nothing
 }
+
+default'List :: [Databases]
+default'List = []

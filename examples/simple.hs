@@ -1,9 +1,9 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
 
-import System.DevUtils.MySQL.Helpers.ProcessList (ProcessList(..), processListQuery)
-import System.DevUtils.MySQL.Helpers.Databases (Databases(..), databasesQuery)
-import System.DevUtils.MySQL.Helpers.Tables (Tables(..), tablesQuery)
+import qualified System.DevUtils.MySQL.Helpers.ProcessList as PL (run'List, query'List)
+import qualified System.DevUtils.MySQL.Helpers.Databases as DB (run'List, query'List)
+import qualified System.DevUtils.MySQL.Helpers.Tables as TBL (run'List, query'List)
 import Database.MySQL.Simple
 import System.Environment
 
@@ -22,19 +22,6 @@ select :: Connection -> IO [Only Int]
 select conn = do
  query_ conn "select 1"
 
-processList :: Connection -> IO [ProcessList]
-processList conn = do
- query_ conn processListQuery
-
-databases :: Connection -> IO [Databases]
-databases conn = do
- query_ conn databasesQuery
-
-tables :: Connection -> IO [Tables]
-tables conn = do
- query_ conn tablesQuery
-
-
 main :: IO ()
 main = do
  argv <- getArgs
@@ -46,17 +33,17 @@ main = do
  vSelect <- select conn
  putStrLn $ show vSelect
 
- banner processListQuery
- vProcessList <- processList conn
+ banner PL.query'List
+ vProcessList <- PL.run'List conn
  putStrLn $ show vProcessList
 
- banner databasesQuery
- vDatabases <- databases conn
+ banner DB.query'List
+ vDatabases <- DB.run'List conn
  putStrLn $ show vDatabases
 
  connMysql <- connekt (head argv) "mysql"
- banner tablesQuery
- vTables <- tables connMysql
+ banner TBL.query'List
+ vTables <- TBL.run'List connMysql
  putStrLn $ show vTables
 
  return ()

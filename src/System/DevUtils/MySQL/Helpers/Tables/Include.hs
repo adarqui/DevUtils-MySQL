@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module System.DevUtils.MySQL.Helpers.Tables.Include (
  Tables(..),
- tablesQuery
+ query'List
 ) where
 
 import Database.MySQL.Simple
@@ -20,5 +20,5 @@ data Tables = Tables {
  _type :: Maybe String
 } deriving (Show)
 
-tablesQuery :: Query
-tablesQuery = "show full tables"
+query'List :: Query
+query'List = "show full tables"

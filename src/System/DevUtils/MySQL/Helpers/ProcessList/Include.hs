@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module System.DevUtils.MySQL.Helpers.ProcessList.Include (
  ProcessList(..),
- processListQuery
+ query'List
 ) where
 
 import Database.MySQL.Simple
@@ -32,5 +32,5 @@ data ProcessList = ProcessList {
  _info :: Maybe String
 } deriving (Show)
 
-processListQuery :: Query
-processListQuery = "show full processlist"
+query'List :: Query
+query'List = "show full processlist"
