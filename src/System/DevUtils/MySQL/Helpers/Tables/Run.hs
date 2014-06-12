@@ -1,11 +1,11 @@
 module System.DevUtils.MySQL.Helpers.Tables.Run (
- run'List
+ showFullTables
 ) where
 
 import System.DevUtils.MySQL.Helpers.Tables.Include (Tables(..), query'List)
 
 import Database.MySQL.Simple
 
-run'List :: Connection -> IO [Tables]
-run'List conn = do
+showFullTables :: Connection -> IO [Tables]
+showFullTables conn = do
  query_ conn query'List

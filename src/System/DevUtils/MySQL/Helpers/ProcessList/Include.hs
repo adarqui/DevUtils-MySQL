@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings, DeriveGeneric #-}
 module System.DevUtils.MySQL.Helpers.ProcessList.Include (
  ProcessList(..),
  query'List
@@ -7,6 +7,8 @@ module System.DevUtils.MySQL.Helpers.ProcessList.Include (
 import Database.MySQL.Simple
 import Database.MySQL.Simple.QueryResults
 import Database.MySQL.Simple.Result
+
+import GHC.Generics (Generic)
 
 instance QueryResults ProcessList where
  convertResults [fa,fb,fc,fd,fe,ff,fg,fh] [va,vb,vc,vd,ve,vf,vg,vh] = ProcessList { _id = a, _user = b, _host = c, _db = d, _command = e, _time = f, _state = g, _info = h }
@@ -30,7 +32,7 @@ data ProcessList = ProcessList {
  _time :: Maybe Integer,
  _state :: Maybe String,
  _info :: Maybe String
-} deriving (Show)
+} deriving (Eq, Show, Generic)
 
 query'List :: Query
 query'List = "show full processlist"

@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings, DeriveGeneric #-}
 module System.DevUtils.MySQL.Helpers.Databases.Include (
  Databases(..),
  query'List
@@ -8,6 +8,7 @@ import Database.MySQL.Simple
 import Database.MySQL.Simple.QueryResults
 import Database.MySQL.Simple.Result
 
+import GHC.Generics (Generic)
 import Data.Maybe ()
 
 instance QueryResults Databases where
@@ -18,7 +19,7 @@ instance QueryResults Databases where
 
 data Databases = Databases {
  _database :: Maybe String
-} deriving (Show)
+} deriving (Eq, Show, Generic)
 
 query'List :: Query
 query'List = "show databases"

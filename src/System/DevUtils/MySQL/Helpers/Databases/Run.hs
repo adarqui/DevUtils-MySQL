@@ -1,11 +1,11 @@
 module System.DevUtils.MySQL.Helpers.Databases.Run (
- run'List
+ showDatabases
 ) where
 
 import System.DevUtils.MySQL.Helpers.Databases.Include (Databases(..), query'List)
 
 import Database.MySQL.Simple
 
-run'List :: Connection -> IO [Databases]
-run'List conn = do
+showDatabases :: Connection -> IO [Databases]
+showDatabases conn = do
  query_ conn query'List

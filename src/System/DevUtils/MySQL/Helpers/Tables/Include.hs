@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings, DeriveGeneric #-}
 module System.DevUtils.MySQL.Helpers.Tables.Include (
  Tables(..),
  query'List
@@ -7,6 +7,8 @@ module System.DevUtils.MySQL.Helpers.Tables.Include (
 import Database.MySQL.Simple
 import Database.MySQL.Simple.QueryResults
 import Database.MySQL.Simple.Result
+
+import GHC.Generics (Generic)
 
 instance QueryResults Tables where
  convertResults [fa, fb] [va, vb] = Tables { _table = a, _type = b }
@@ -18,7 +20,7 @@ instance QueryResults Tables where
 data Tables = Tables {
  _table :: Maybe String,
  _type :: Maybe String
-} deriving (Show)
+} deriving (Eq, Show, Generic)
 
 query'List :: Query
 query'List = "show full tables"
