@@ -24,12 +24,12 @@ instance QueryResults ProcessList where
  convertResults fs vs = convertError fs vs 2
 
 data ProcessList = ProcessList {
- _id :: Maybe Integer,
+ _id :: Maybe Int,
  _user :: Maybe String,
  _host :: Maybe String,
  _db :: Maybe String,
  _command :: Maybe String,
- _time :: Maybe Integer,
+ _time :: Maybe Int,
  _state :: Maybe String,
  _info :: Maybe String
 } deriving (Eq, Show, Generic)
