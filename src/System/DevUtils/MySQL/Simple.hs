@@ -12,7 +12,7 @@ import System.DevUtils.Base.Url.Auth
  (Auth(..))
 
 import System.DevUtils.Base.Url.Connection
- (Connection(..))
+ (Connection(..), ConnectionType(..))
 
 import Database.MySQL.Simple
  (ConnectInfo(..))
@@ -22,12 +22,12 @@ import Data.Maybe
 
 urlToConnectInfo :: MySQL -> ConnectInfo
 urlToConnectInfo url = ConnectInfo {
-  connectHost = _dest $ _con $ _ses url,
+  connectHost = tcp,
   connectPort = _port $ _con $ _ses url,
   connectUser = user,
   connectPassword = pass,
   connectDatabase = db,
-  connectPath = _dest $ _con $ _ses url,
+  connectPath = unix,
   connectOptions = [],
   connectSSL = Nothing
  }
@@ -38,3 +38,6 @@ urlToConnectInfo url = ConnectInfo {
   (user,pass) = case (_auth $ _ses url) of
    (Just v) -> (_user v, maybe "" (\x -> x) (_pass v))
    _ -> ("root","")
+  (tcp,unix) = let (t,d) = (_type $ _con $ _ses url, _dest $ _con $ _ses url) in case t of
+   UNIX -> ("", d)
+   _ -> (d, "")
