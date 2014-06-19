@@ -16,10 +16,19 @@ library
    System.DevUtils.MySQL.Include
    System.DevUtils.MySQL.Helpers.ProcessList
    System.DevUtils.MySQL.Helpers.ProcessList.Include
+   System.DevUtils.MySQL.Helpers.ProcessList.Default
+   System.DevUtils.MySQL.Helpers.ProcessList.JSON
+   System.DevUtils.MySQL.Helpers.ProcessList.Run
    System.DevUtils.MySQL.Helpers.Databases
    System.DevUtils.MySQL.Helpers.Databases.Include
+   System.DevUtils.MySQL.Helpers.Databases.Default
+   System.DevUtils.MySQL.Helpers.Databases.JSON
+   System.DevUtils.MySQL.Helpers.Databases.Run
    System.DevUtils.MySQL.Helpers.Tables
    System.DevUtils.MySQL.Helpers.Tables.Include
+   System.DevUtils.MySQL.Helpers.Tables.Default
+   System.DevUtils.MySQL.Helpers.Tables.JSON
+   System.DevUtils.MySQL.Helpers.Tables.Run
   build-depends:       base ==4.7.*, HUnit ==1.2.5.*, bytestring ==0.10.4.0, mysql-simple ==0.2.2.3, aeson ==0.7.0.6
   GHC-Options:         -Wall -rtsopts
   hs-source-dirs:      src
@@ -27,5 +36,5 @@ library
 executable "simple"
   main-is:             simple.hs
   build-depends:       base ==4.7.*, HUnit ==1.2.5.*, bytestring ==0.10.4.0, mysql-simple ==0.2.2.3, DevUtils-MySQL
-  GHC-Options:         -O3 -Wall -rtsopts
+  GHC-Options:         -O2 -Wall -rtsopts
   hs-source-dirs:      examples
